@@ -6,8 +6,37 @@ import com.badlogic.gdx.math.Rectangle;
 public final class Tile {
 	//static final int TILESIZE = 32;
 	static Texture tileSetTexture;
-	static int tileWidth = 48;
-	static int tileHeight = 48;
+	static int tileWidth = 33;
+	static int tileHeight = 27;
+	static int tileStepX = 52;
+    static int baseOffsetX = -14;
+
+    public static int getBaseOffsetX() {
+        return baseOffsetX;
+    }
+
+
+
+    public static int getBaseOffsetY() {
+        return baseOffsetY;
+    }
+
+    static int baseOffsetY = -14;
+
+    public static int getTileStepX() {
+        return tileStepX;
+    }
+
+    public static int getTileStepY() {
+        return tileStepY;
+    }
+
+    public static int getOddRowXOffset() {
+        return oddRowXOffset;
+    }
+
+    static int tileStepY = 14;
+	static int oddRowXOffset = 26; // 19 + 7
 
 	public static int getTileWidth() {
 		return tileWidth;

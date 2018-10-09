@@ -19,7 +19,6 @@ import com.badlogic.gdx.utils.Logger;
 public class YATE extends ApplicationAdapter {
 	SpriteBatch batch;
 	TileMap map = new TileMap();
-	int tileSize = 32;
 
 	int carreLargeur; // Largeur en tuile dans l'ecran
 	int carreHauteur; // Hauteur en tuile dans l'ecran
@@ -30,10 +29,10 @@ public class YATE extends ApplicationAdapter {
 
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		batch = new SpriteBatch();
-		Tile.setTileSetTexture (new Texture("part2_tileset.png"));
+		Tile.setTileSetTexture (new Texture("part3_tileset.png"));
 
-		carreLargeur = Gdx.graphics.getWidth() / Tile.getTileWidth() + 2; // + 2 pour enlever le bug
-		carreHauteur = Gdx.graphics.getHeight() / Tile.getTileHeight() + 2;
+		carreLargeur = Gdx.graphics.getWidth() / Tile.getTileStepX() + 2; // + 2 pour enlever le bug
+		carreHauteur = Gdx.graphics.getHeight() / Tile.getTileStepY() + 2;
 
 	}
 
@@ -54,14 +53,14 @@ public class YATE extends ApplicationAdapter {
 		if (Gdx.input.isKeyPressed(Keys.LEFT)) {
 			camIsDirty = true;
 			Camera.setLocation(MathUtils.clamp(
-					Camera.getLocation().x - 2, 0, (map.getMapWidth() - carreLargeur) * tileSize),
+					Camera.getLocation().x - 2, 0, (map.getMapWidth() - carreLargeur) * Tile.getTileStepX()),
 					Camera.getLocation().y);
 		}
 
 		if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
 			camIsDirty = true;
 			Camera.setLocation(MathUtils.clamp(
-					Camera.getLocation().x + 2, 0, (map.getMapWidth() - carreLargeur) * tileSize),
+					Camera.getLocation().x + 2, 0, (map.getMapWidth() - carreLargeur) * Tile.getTileStepX()),
 					Camera.getLocation().y);
 		}
 
@@ -69,19 +68,19 @@ public class YATE extends ApplicationAdapter {
 			camIsDirty = true;
 			Camera.setLocation(Camera.getLocation().x,
 					MathUtils.clamp(
-							Camera.getLocation().y + 2, 0, (map.getMapHeight() - carreHauteur) * tileSize));
+							Camera.getLocation().y + 2, 0, (map.getMapHeight() - carreHauteur) * Tile.getTileStepY()));
 		}
 
 		if (Gdx.input.isKeyPressed(Keys.DOWN)) {
 			camIsDirty = true;
 			Camera.setLocation(Camera.getLocation().x,
 					MathUtils.clamp(
-							Camera.getLocation().y - 2, 0, (map.getMapHeight() - carreHauteur) * tileSize));
+							Camera.getLocation().y - 2, 0, (map.getMapHeight() - carreHauteur) * Tile.getTileStepY()));
 		}
 	}
 
 	private void draw() {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 		/**
@@ -89,15 +88,17 @@ public class YATE extends ApplicationAdapter {
 		 * a afficher
 		 */
 		Vector2 firstSquare = new Vector2(
-				Camera.getLocation().x / (float)Tile.getTileWidth(),
-				Camera.getLocation().y / (float)Tile.getTileHeight());
+				Camera.getLocation().x / (float)Tile.getTileStepX(),
+				Camera.getLocation().y / (float)Tile.getTileStepY());
 		int firstX = (int) firstSquare.x;
 		int firstY = (int) firstSquare.y;
 
 		/**
 		 * Calcul pour le decalage pour la camera pour les cotes
 		 */
-		Vector2 squareOffset = new Vector2(Camera.getLocation().x % Tile.getTileWidth(), Camera.getLocation().y % Tile.getTileHeight());
+		Vector2 squareOffset = new Vector2(
+				Camera.getLocation().x % Tile.getTileStepX(),
+				Camera.getLocation().y % Tile.getTileStepY());
 		int offsetX = (int)squareOffset.x;
 		int offsetY = (int)squareOffset.y;
 
@@ -107,6 +108,11 @@ public class YATE extends ApplicationAdapter {
 		for (int y = 0; y < carreHauteur; y++) {
 			int positionY = (y * Tile.getTileHeight()) - offsetY;
 
+			int rowOffset = 0;
+			if ((firstY + y) % 2 == 1) {
+				rowOffset = Tile.getOddRowXOffset();
+			}
+
 			for (int x = 0; x < carreLargeur; x++) {
 
 				for (int tileId : map.getRow(y + firstY).getCell(x + firstX).getBaseTiles()) {
@@ -115,7 +121,8 @@ public class YATE extends ApplicationAdapter {
 					Rectangle srcRect = Tile.getSourceRectangle(tileId);
 
 					batch.draw(Tile.getTileSetTexture(),
-							(x * Tile.getTileWidth()) - offsetX, positionY,
+							(x * Tile.getTileStepX()) - offsetX + rowOffset + Tile.getBaseOffsetX(),
+							(y * Tile.getTileStepY()) - offsetY + Tile.getBaseOffsetY(),
 							(int)srcRect.x, (int)srcRect.y,
 							(int)srcRect.width, (int)srcRect.height);
 				}

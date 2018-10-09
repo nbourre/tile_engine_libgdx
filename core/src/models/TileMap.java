@@ -39,55 +39,57 @@ public class TileMap {
 		rows.get(0).columns.get(6).setTileID(2);
 		rows.get(0).columns.get(7).setTileID(2);
 
-		rows.get(1).columns.get(3).setTileID(1);
-		rows.get(1).columns.get(4).setTileID(1);
-		rows.get(1).columns.get(5).setTileID(1);
-		rows.get(1).columns.get(6).setTileID(1);
-		rows.get(1).columns.get(7).setTileID(1);
+		rows.get(1).columns.get(3).setTileID(2);
+		rows.get(1).columns.get(4).setTileID(2);
+		rows.get(1).columns.get(5).setTileID(2);
+		rows.get(1).columns.get(6).setTileID(2);
+		rows.get(1).columns.get(7).setTileID(2);
 
+		rows.get(0).columns.get(2).setTileID(3);
+		rows.get(1).columns.get(2).setTileID(3);
+		rows.get(1).columns.get(1).setTileID(3);
 		rows.get(2).columns.get(2).setTileID(3);
 		rows.get(2).columns.get(3).setTileID(3);
-		rows.get(2).columns.get(4).setTileID(3);
-		rows.get(2).columns.get(5).setTileID(3);
-		rows.get(2).columns.get(6).setTileID(3);
-		
-		rows.get(2).columns.get(7).setTileID(1);
-		rows.get(3).columns.get(2).setTileID(3);
+
+		rows.get(2).columns.get(4).setTileID(1);
+		rows.get(2).columns.get(5).setTileID(1);
 		rows.get(3).columns.get(3).setTileID(1);
 		rows.get(3).columns.get(4).setTileID(1);
-		rows.get(3).columns.get(5).setTileID(2);
-		
-		rows.get(3).columns.get(6).setTileID(2);
-		rows.get(3).columns.get(7).setTileID(2);
-		rows.get(4).columns.get(2).setTileID(3);
-		rows.get(4).columns.get(3).setTileID(1);
-		rows.get(4).columns.get(4).setTileID(1);
+		rows.get(4).columns.get(5).setTileID(1);
+        rows.get(4).columns.get(4).setTileID(1);
+        rows.get(5).columns.get(4).setTileID(1);
 
-		rows.get(4).columns.get(5).setTileID(2);
-		rows.get(4).columns.get(6).setTileID(2);
-		rows.get(4).columns.get(7).setTileID(2);
-		rows.get(5).columns.get(2).setTileID(3);
-		rows.get(5).columns.get(3).setTileID(1);
-		
-		rows.get(5).columns.get(4).setTileID(1);
-		rows.get(5).columns.get(5).setTileID(2);
-		rows.get(5).columns.get(6).setTileID(2);
-		rows.get(5).columns.get(7).setTileID(2);
+//		rows.get(3).columns.get(6).setTileID(2);
+//		rows.get(3).columns.get(7).setTileID(2);
+//		rows.get(4).columns.get(2).setTileID(3);
+//		rows.get(4).columns.get(3).setTileID(1);
+//		rows.get(4).columns.get(4).setTileID(1);
+//
+//		rows.get(4).columns.get(5).setTileID(2);
+//		rows.get(4).columns.get(6).setTileID(2);
+//		rows.get(4).columns.get(7).setTileID(2);
+//		rows.get(5).columns.get(2).setTileID(3);
+//		rows.get(5).columns.get(3).setTileID(1);
+//
+//		rows.get(5).columns.get(4).setTileID(1);
+//		rows.get(5).columns.get(5).setTileID(2);
+//		rows.get(5).columns.get(6).setTileID(2);
+//		rows.get(5).columns.get(7).setTileID(2);
 
 		// Fin de la création pour itération 1
 
-		rows.get(5).columns.get(5).setTileID(30);
-		rows.get(4).columns.get(5).setTileID(27);
-		rows.get(3).columns.get(5).setTileID(28);
-
-		rows.get(5).columns.get(6).setTileID(25);
-		rows.get(3).columns.get(6).setTileID(24);
-
-		rows.get(5).columns.get(7).setTileID(31);
-		rows.get(4).columns.get(7).setTileID(26);
-		rows.get(3).columns.get(7).setTileID(29);
-
-		rows.get(4).columns.get(6).setTileID(104);
+//		rows.get(5).columns.get(5).setTileID(30);
+//		rows.get(4).columns.get(5).setTileID(27);
+//		rows.get(3).columns.get(5).setTileID(28);
+//
+//		rows.get(5).columns.get(6).setTileID(25);
+//		rows.get(3).columns.get(6).setTileID(24);
+//
+//		rows.get(5).columns.get(7).setTileID(31);
+//		rows.get(4).columns.get(7).setTileID(26);
+//		rows.get(3).columns.get(7).setTileID(29);
+//
+//		rows.get(4).columns.get(6).setTileID(104);
 
 		// Fin de la création pour itération 2
 	}
