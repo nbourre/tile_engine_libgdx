@@ -14,7 +14,8 @@ public class MapCell {
 
 	public void setTileID(int tileID) {
 		if (baseTiles.size() > 0) {
-			baseTiles.set(0, tileID);
+			baseTiles.add(tileID);
+			//baseTiles.set(0, tileID);
 		} else {
 			baseTiles.add(tileID);
 		}

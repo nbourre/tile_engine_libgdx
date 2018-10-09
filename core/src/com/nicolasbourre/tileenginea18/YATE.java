@@ -32,7 +32,7 @@ public class YATE extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		Tile.setTileSetTexture (new Texture("part2_tileset.png"));
 
-		carreLargeur = Gdx.graphics.getWidth() / Tile.getTileWidth() + 1; // + 2 pour enlever le bug
+		carreLargeur = Gdx.graphics.getWidth() / Tile.getTileWidth() + 2; // + 2 pour enlever le bug
 		carreHauteur = Gdx.graphics.getHeight() / Tile.getTileHeight() + 2;
 
 	}
