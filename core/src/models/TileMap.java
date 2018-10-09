@@ -92,7 +92,23 @@ public class TileMap {
 //		rows.get(4).columns.get(6).setTileID(104);
 
 		// Fin de la création pour itération 2
-	}
+
+        rows.get(16).columns.get(4).addHeightTile(54);
+        rows.get(17).columns.get(3).addHeightTile(54);
+        rows.get(15).columns.get(3).addHeightTile(54);
+//        rows.get(16).columns.get(3).addHeightTile(53);
+        rows.get(15).columns.get(4).addHeightTile(54);
+        rows.get(15).columns.get(4).addHeightTile(54);
+//        rows.get(15).columns.get(4).addHeightTile(51);
+//        rows.get(18).columns.get(3).addHeightTile(51);
+//        rows.get(19).columns.get(3).addHeightTile(50);
+//        rows.get(18).columns.get(4).addHeightTile(55);
+        rows.get(14).columns.get(4).addHeightTile(54);
+//        rows.get(14).columns.get(5).addHeightTile(62);
+//        rows.get(14).columns.get(5).addHeightTile(61);
+//        rows.get(14).columns.get(5).addHeightTile(63);
+
+    }
 
 	public int getMapWidth() {
 		return mapWidth;

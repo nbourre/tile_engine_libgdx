@@ -4,24 +4,25 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
 public final class Tile {
-	//static final int TILESIZE = 32;
 	static Texture tileSetTexture;
-	static int tileWidth = 33;
-	static int tileHeight = 27;
-	static int tileStepX = 52;
-    static int baseOffsetX = -14;
+	static int tileWidth = 64;
+	static int tileHeight = 64;
+	static int tileStepX = 64;
+	static int tileStepY = 16;
+	static int oddRowXOffset = 32;
+	static int heighTileOffset = 32;
+    static int baseOffsetX = -32;
+	static int baseOffsetY = -64;
+
+	static float heightRowDepthMod = 0.0000001f;
 
     public static int getBaseOffsetX() {
         return baseOffsetX;
     }
 
-
-
     public static int getBaseOffsetY() {
         return baseOffsetY;
     }
-
-    static int baseOffsetY = -14;
 
     public static int getTileStepX() {
         return tileStepX;
@@ -34,9 +35,6 @@ public final class Tile {
     public static int getOddRowXOffset() {
         return oddRowXOffset;
     }
-
-    static int tileStepY = 14;
-	static int oddRowXOffset = 26; // 19 + 7
 
 	public static int getTileWidth() {
 		return tileWidth;
@@ -54,7 +52,9 @@ public final class Tile {
 		Tile.tileHeight = tileHeight;
 	}
 
-
+	public static int getHeighTileOffset() {
+		return heighTileOffset;
+	}
 
 	public static Rectangle getSourceRectangle(int tileIndex) {
 		int tileY = tileIndex / (tileSetTexture.getWidth() / tileWidth);
@@ -74,4 +74,8 @@ public final class Tile {
 	public static void setTileSetTexture(Texture tileSetTexture) {
 		Tile.tileSetTexture = tileSetTexture;
 	}
+
+    public static float getHeightRowDepthMod() {
+        return heightRowDepthMod;
+    }
 }

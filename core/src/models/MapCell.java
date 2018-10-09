@@ -6,23 +6,20 @@ public class MapCell {
 
 	private int tileID;
 
-	ArrayList<Integer> baseTiles = new ArrayList<Integer>();
+	ArrayList<TileComplex> baseTiles = new ArrayList<TileComplex>();
+	ArrayList<TileComplex> heightTiles = new ArrayList<TileComplex>();
+
 
 	public int getTileID() {
 		return tileID;
 	}
 
 	public void setTileID(int tileID) {
-		if (baseTiles.size() > 0) {
-			baseTiles.add(tileID);
-			//baseTiles.set(0, tileID);
-		} else {
-			baseTiles.add(tileID);
-		}
+		baseTiles.add(new TileComplex(tileID));
 	}
 
 	public void addBaseTile(int tileID) {
-		baseTiles.add(tileID);
+		baseTiles.add(new TileComplex(tileID));
 	}
 
 	public MapCell(int tileID) {
@@ -30,7 +27,15 @@ public class MapCell {
 		addBaseTile(tileID);
 	}
 
-	public ArrayList<Integer> getBaseTiles() {
+	public void addHeightTile (int tileID) {
+	    heightTiles.add(new TileComplex(tileID));
+    }
+
+	public ArrayList<TileComplex> getBaseTiles() {
 		return baseTiles;
+	}
+
+	public ArrayList<TileComplex> getHeightTiles() {
+		return heightTiles;
 	}
 }
